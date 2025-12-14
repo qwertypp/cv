@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CV</title>
+
+    <style>
+        :root {
+            --base-font-size: 16px;
+            --primary: #3b82f6;
+            --dark: #111827;
+            --gray: #6b7280;
+        }
+
+        body {
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+            color: #333;
+            font-size: var(--base-font-size);
+            transition: font-size 0.2s ease;
+        }
+
+        /* ===== Top Navigation ===== */
+        .top-bar {
+            max-width: 900px;
+            margin: 0 auto 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+        }
+
+        .nav-buttons,
+        .categories {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn,
+        .category-btn {
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: 1px solid var(--primary);
+            background: white;
+            color: var(--primary);
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .nav-btn.active,
+        .category-btn.active {
+            background: var(--primary);
+            color: white;
+        }
+
+        .nav-btn:hover,
+        .category-btn:hover {
+            background: #2563eb;
+            color: white;
+        }
+
+        .font-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .font-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: none;
+            background: var(--dark);
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .font-btn:hover {
+            background: #374151;
+        }
+
+        /* ===== Sections ===== */
+        .cv-section {
+            max-width: 900px;
+            margin: 0 auto;
+            display: none;
+        }
+
+        .cv-section.active {
+            display: block;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 30px;
+            border-bottom: 3px solid var(--primary);
+            display: inline-block;
+            padding-bottom: 6px;
+        }
+
+        /* ===== Experience Cards ===== */
+        .experience-card {
+            background: white;
+            border-radius: 14px;
+            padding: 28px;
+            margin-bottom: 24px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        .experience-card.hidden {
+            display: none;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            margin-bottom: 12px;
+        }
+
+        .company-title {
+            font-size: 1.35rem;
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .work-years {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .description {
+            margin-bottom: 18px;
+            color: #4b5563;
+        }
+
+        .responsibilities-title {
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .responsibilities {
+            padding-left: 18px;
+        }
+
+        .responsibilities li {
+            margin-bottom: 8px;
+        }
+
+        /* ===== About & Contacts ===== */
+        .text-card {
+            background: white;
+            border-radius: 14px;
+            padding: 28px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 20px;
+            }
+
+            .top-bar {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- ===== Top Bar ===== -->
+<div class="top-bar">
+    <div class="nav-buttons">
+        <button class="nav-btn active" data-section="about">About</button>
+        <button class="nav-btn" data-section="experience">Experience</button>
+        <button class="nav-btn" data-section="contacts">Contacts</button>
+    </div>
+
+    <div class="font-controls">
+        <button class="font-btn" id="fontMinus">–</button>
+        <button class="font-btn" id="fontPlus">+</button>
+    </div>
+</div>
+
+<!-- ===== ABOUT ===== -->
+<section class="cv-section active" id="about">
+    <h1 class="section-title">About</h1>
+    <div class="text-card">
+        <p>
+            QA Engineer with experience in manual and automated testing of web
+            applications. Strong focus on quality, reliability, and test automation.
+        </p>
+    </div>
+</section>
+
+<!-- ===== EXPERIENCE ===== -->
+<section class="cv-section" id="experience">
+    <h1 class="section-title">Experience</h1>
+
+    <div class="categories" style="margin-bottom: 20px;">
+        <button class="category-btn" data-filter="QA">QA</button>
+        <button class="category-btn" data-filter="QA Automation">QA Automation</button>
+    </div>
+
+    <div class="experience-card" data-category="QA">
+        <div class="experience-header">
+            <div class="company-title">Manual QA Engineer</div>
+            <div class="work-years">2019 – 2021</div>
+        </div>
+
+        <p class="description">Manual testing of web applications.</p>
+
+        <div class="responsibilities-title">Responsibilities</div>
+        <ul class="responsibilities">
+            <li>Test case creation</li>
+            <li>Bug reporting</li>
+            <li>Regression testing</li>
+        </ul>
+    </div>
+
+    <div class="experience-card" data-category="QA Automation">
+        <div class="experience-header">
+            <div class="company-title">QA Automation Engineer</div>
+            <div class="work-years">2021 – 2024</div>
+        </div>
+
+        <p class="description">Automated UI and API testing.</p>
+
+        <div class="responsibilities-title">Responsibilities</div>
+        <ul class="responsibilities">
+            <li>Test automation frameworks</li>
+            <li>CI/CD integration</li>
+            <li>Code reviews</li>
+        </ul>
+    </div>
+</section>
+
+<!-- ===== CONTACTS ===== -->
+<section class="cv-section" id="contacts">
+    <h1 class="section-title">Contacts</h1>
+    <div class="text-card">
+        <p>Email: your.email@example.com</p>
+        <p>LinkedIn: linkedin.com/in/yourprofile</p>
+        <p>GitHub: github.com/yourprofile</p>
+    </div>
+</section>
+
+<script>
+    let currentFontSize = 16;
+    let activeFilter = null;
+
+    const fontPlus = document.getElementById("fontPlus");
+    const fontMinus = document.getElementById("fontMinus");
+
+    fontPlus.onclick = () => {
+        currentFontSize++;
+        document.documentElement.style.setProperty("--base-font-size", currentFontSize + "px");
+    };
+
+    fontMinus.onclick = () => {
+        if (currentFontSize > 12) {
+            currentFontSize--;
+            document.documentElement.style.setProperty("--base-font-size", currentFontSize + "px");
+        }
+    };
+
+    // Section navigation
+    document.querySelectorAll(".nav-btn").forEach(btn => {
+        btn.onclick = () => {
+            document.querySelectorAll(".nav-btn").forEach(b => b.classList.remove("active"));
+            document.querySelectorAll(".cv-section").forEach(s => s.classList.remove("active"));
+
+            btn.classList.add("active");
+            document.getElementById(btn.dataset.section).classList.add("active");
+        };
+    });
+
+    // Experience filters
+    const cards = document.querySelectorAll(".experience-card");
+    document.querySelectorAll(".category-btn").forEach(btn => {
+        btn.onclick = () => {
+            const filter = btn.dataset.filter;
+
+            if (activeFilter === filter) {
+                activeFilter = null;
+                document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
+                cards.forEach(c => c.classList.remove("hidden"));
+                return;
+            }
+
+            activeFilter = filter;
+            document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
+            btn.classList.add("active");
+
+            cards.forEach(card =>
+                card.classList.toggle("hidden", card.dataset.category !== filter)
+            );
+        };
+    });
+</script>
+
+</body>
+</html>
