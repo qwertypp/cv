@@ -209,8 +209,7 @@
         <button class="category-btn" data-filter="QA Automation">QA Automation</button>
     </div>
 
-    <div class="experience-card" data-category="QA Automation">
-        <div class="experience-card" data-category="QA">
+    <div class="experience-card" data-category="QA Automation,QA">
             <div class="experience-header">
                 <div class="company-title">General QA, Video streaming</div>
                 <div class="work-years">2015 – 2016</div>
@@ -225,7 +224,7 @@
                 <li>Writing automation scripts in ProtractorJs and JasmineJs</li>
             </ul>
         </div>
-    </div>
+
 
     <div class="experience-card" data-category="QA Automation">
         <div class="experience-header">
@@ -304,26 +303,40 @@
     });
 
     // Experience filters
+    const categoryButtons = document.querySelectorAll(".category-btn");
     const cards = document.querySelectorAll(".experience-card");
-    document.querySelectorAll(".category-btn").forEach(btn => {
-        btn.onclick = () => {
+
+    let activeFilters = new Set();
+
+    categoryButtons.forEach(btn => {
+        btn.addEventListener("click", () => {
             const filter = btn.dataset.filter;
 
-            if (activeFilter === filter) {
-                activeFilter = null;
-                document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
-                cards.forEach(c => c.classList.remove("hidden"));
+            // Toggle filter
+            if (activeFilters.has(filter)) {
+                activeFilters.delete(filter);
+                btn.classList.remove("active");
+            } else {
+                activeFilters.add(filter);
+                btn.classList.add("active");
+            }
+
+            // Show all if no filters selected
+            if (activeFilters.size === 0) {
+                cards.forEach(card => card.classList.remove("hidden"));
                 return;
             }
 
-            activeFilter = filter;
-            document.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
-            btn.classList.add("active");
+            // Apply multi-filter
+            cards.forEach(card => {
+                const cardCategories = card.dataset.category
+                    .split(",")
+                    .map(c => c.trim());
 
-            cards.forEach(card =>
-                card.classList.toggle("hidden", card.dataset.category !== filter)
-            );
-        };
+                const match = cardCategories.some(cat => activeFilters.has(cat));
+                card.classList.toggle("hidden", !match);
+            });
+        });
     });
 </script>
 
