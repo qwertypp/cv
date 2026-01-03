@@ -201,6 +201,68 @@
                 max-width: 200px;
             }
         }
+
+        .pdf-btn {
+            padding: 8px 18px;
+            border-radius: 20px;
+            border: none;
+            background: #16a34a;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+
+        .pdf-btn:hover {
+            background: #15803d;
+        }
+
+        @media print {
+            body {
+                background: white;
+                padding: 0;
+            }
+
+            /* Hide navigation & buttons */
+            .top-bar,
+            .font-controls,
+            .pdf-btn,
+            .category-btn,
+            .nav-btn {
+                display: none !important;
+            }
+
+            /* Show all sections */
+            .cv-section {
+                display: block !important;
+            }
+
+            /* Remove card shadows & spacing */
+            .experience-card,
+            .text-card {
+                box-shadow: none;
+                margin-bottom: 20px;
+                padding: 20px;
+            }
+
+            h1, h2 {
+                page-break-after: avoid;
+            }
+
+            ul {
+                page-break-inside: avoid;
+            }
+        }
+
+        @page {
+            size: A4;
+            margin: 20mm;
+        }
+        @media print {
+            body {
+                font-size: 14px !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -210,6 +272,7 @@
     <div class="nav-buttons">
         <button class="nav-btn active" data-section="about">About</button>
         <button class="nav-btn" data-section="experience">Experience</button>
+        <button class="nav-btn" data-section="experience">Skills</button>
         <button class="nav-btn" data-section="contacts">Contacts</button>
     </div>
 
@@ -217,8 +280,13 @@
         <button class="font-btn" id="fontMinus">–</button>
         <button class="font-btn" id="fontPlus">+</button>
     </div>
+    <button class="pdf-btn" id="downloadPdf">📄 PDF</button>
 </div>
-
+<script>
+    document.getElementById("downloadPdf").addEventListener("click", () => {
+        window.print();
+    });
+</script>
 <!-- ===== ABOUT ===== -->
 <section class="cv-section active" id="about">
     <h1 class="section-title">About</h1>
@@ -227,6 +295,9 @@
         <!-- Profile photo -->
         <div class="about-photo">
             <img src="photo.jpg" alt="Profile photo">
+        </div>
+        <div>
+            English: C1 (Advanced)
         </div>
 
         <!-- About text -->
@@ -480,6 +551,28 @@
 
 
 </section>
+
+<section class="cv-section" id="skills">
+    <h1 class="section-title">Skills</h1>
+
+    <div class="text-card">
+        <h2>Programming Languages</h2>
+        <p>Java, JavaScript, TypeScript, Python</p>
+
+        <h2>Test Automation & Frameworks</h2>
+        <p>Selenium, Playwright, Cypress, Appium</p>
+
+        <h2>Tools & Platforms</h2>
+        <p>Git, GitHub, GitLab, Jenkins, Docker</p>
+
+        <h2>Methodologies</h2>
+        <p>Agile, Scrum, Kanban, TDD, BDD</p>
+
+        <h2>Education</h2>
+        <p>Bachelor’s Degree in Information security at Odesa National Telecommunications Academy</p>
+    </div>
+</section>
+
 
 <!-- ===== CONTACTS ===== -->
 <section class="cv-section" id="contacts">
