@@ -194,11 +194,37 @@
     <h1 class="section-title">About</h1>
     <div class="text-card">
         <p>
-            QA Engineer with experience in manual and automated testing of web
-            applications. Strong focus on quality, reliability, and test automation.
+            Hi There! I am QA | SDET | LEAD | Architect with high expertise and over <strong><span id="experienceYears"></span> years</strong> of experience in QA and QA Automation area.
         </p>
+        <br />
+        <p>
+            Please check out what I can do for your company as:
+        </p>
+
+        <h1>QA Engineer</h1>
+        <ul>
+            <li>Setup whole QA process</li>
+            <li>Create high standard documentation</li>
+            <li>Remove all unnecessary tests that spend time</li>
+            <li>Add all needed tests that were missing</li>
+            <li>Closely work with team any size</li>
+            <li>Ability to read the code especially Unit and Integration tests to not tests things twice</li>
+            <li>Work not only on QA process but also help to improve team delivery process</li>
+        </ul>
     </div>
 </section>
+
+<script>
+    function calculateYearsFromStartYear(startYear) {
+        const currentYear = new Date().getFullYear();
+        return Math.max(0, currentYear - startYear);
+    }
+
+    const experienceStartYear = 2013;
+
+    const yearsOfExperience = calculateYearsFromStartYear(experienceStartYear);
+    document.getElementById("experienceYears").textContent = yearsOfExperience;
+</script>
 
 <!-- ===== EXPERIENCE ===== -->
 <section class="cv-section" id="experience">
