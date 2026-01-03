@@ -171,6 +171,36 @@
                 align-items: flex-start;
             }
         }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 30px;
+            align-items: start;
+        }
+
+        .about-photo img {
+            width: 100%;
+            border-radius: 16px;
+            object-fit: cover;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        @media (max-width: 768px) {
+            .about-container {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .about-photo {
+                display: flex;
+                justify-content: center;
+            }
+
+            .about-photo img {
+                max-width: 200px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -192,76 +222,74 @@
 <!-- ===== ABOUT ===== -->
 <section class="cv-section active" id="about">
     <h1 class="section-title">About</h1>
-    <div class="text-card">
-        <p>
-            Hi There! I am QA | SDET | LEAD | Architect with high expertise and over <strong><span id="experienceYears"></span> years</strong> of experience in QA and QA Automation area.
-        </p>
-        <br />
-        <p>
-            Please check out what I can do for your company as:
-        </p>
 
-        <h2>QA Architect</h2>
-        <ul>
-            <li>Implementing testing pyramid</li>
-            <li>Implementing huge framework that will be used by different teams across the company</li>
-            <li>Choosing correct tools and frameworks regarding business needs</li>
-            <li>Creating test strategies to not increase test team dramatically with big amount of tests</li>
-            <li>Prioritize tasks. Sometimes it's cheaper to not implement something at current time than implement</li>
-            <li>Understanding business needs</li>
-            <li>Up to date with new features in IT and QA world</li>
-        </ul>
+    <div class="about-container">
+        <!-- Profile photo -->
+        <div class="about-photo">
+            <img src="img.png" alt="Profile photo">
+        </div>
 
-        <h2>QA Manual and Automation Lead</h2>
-        <ul>
-            <li>Performing interviews</li>
-            <li>Implementing interviews strategies for whole company</li>
-            <li>Educating other people. I help 10 people to start QA and QA Automation career. Most of the students are now Senior level</li>
-            <li>Can work in small and huge team</li>
-            <li>Setup whole QA process</li>
-            <li>Estimate amount of work</li>
-            <li>Sell QA and QA Automation solution to the customer</li>
-            <li>Able to explain with simple language why specific solutions were made</li>
-            <li>Close cooperation with other leads and managers</li>
-        </ul>
+        <!-- About text -->
+        <div class="text-card">
+            <p>
+                Hi there! I am a <strong>QA | SDET | Lead | Architect</strong> with strong technical expertise and over
+                <strong><span id="experienceYears"></span> years</strong> of experience in QA and QA Automation.
+            </p>
 
-        <h2>QA Automation Engineer | SDET</h2>
-        <ul>
-            <li>Create automation framework from scratch</li>
-            <li>Work with already created framework</li>
-            <li>Web testing</li>
-            <li>API testing</li>
-            <li>Mobile testing</li>
-            <li>Performance testing</li>
-            <li>KISS, SOLID, PageObject, PageFactory, BDD and many other best and existing practice</li>
-            <li>Integration tests</li>
-            <li>CI/CD</li>
-        </ul>
+            <p>
+                Below you can find how I can bring value to your company:
+            </p>
 
-        <h2>QA Engineer</h2>
-        <ul>
-            <li>Setup whole QA process</li>
-            <li>Create high standard documentation</li>
-            <li>Remove all unnecessary tests that spend time</li>
-            <li>Add all needed tests that were missing</li>
-            <li>Closely work with team any size</li>
-            <li>Ability to read the code especially Unit and Integration tests to not tests things twice</li>
-            <li>Work not only on QA process but also help to improve team delivery process</li>
-        </ul>
+            <h2>QA Architect</h2>
+            <ul>
+                <li>Designing and implementing the testing pyramid</li>
+                <li>Building large-scale automation frameworks used by multiple teams across the company</li>
+                <li>Selecting tools and technologies based on business needs</li>
+                <li>Creating effective test strategies without dramatically increasing team size</li>
+                <li>Prioritizing tasks with a strong cost–benefit mindset</li>
+                <li>Deep understanding of business requirements</li>
+                <li>Staying up to date with the latest trends in IT and QA</li>
+            </ul>
+
+            <h2>QA Manual and Automation Lead</h2>
+            <ul>
+                <li>Conducting technical and behavioral interviews</li>
+                <li>Defining interview strategies for the entire company</li>
+                <li>Mentoring and educating engineers — helped 10+ people start careers in QA and QA Automation,
+                    most of whom are now Senior-level engineers</li>
+                <li>Working effectively with both small and large teams</li>
+                <li>Building and improving end-to-end QA processes</li>
+                <li>Estimating scope and effort for QA activities</li>
+                <li>Presenting and selling QA and Automation solutions to customers</li>
+                <li>Explaining complex technical decisions in clear, simple language</li>
+                <li>Close collaboration with other leads, managers, and stakeholders</li>
+            </ul>
+
+            <h2>QA Automation Engineer | SDET</h2>
+            <ul>
+                <li>Designing and developing automation frameworks from scratch</li>
+                <li>Maintaining and extending existing automation frameworks</li>
+                <li>Web, API, mobile, and performance testing</li>
+                <li>Writing clean, maintainable, and scalable test code</li>
+                <li>Applying best practices such as KISS, SOLID, Page Object, Page Factory, and BDD</li>
+                <li>Integration and end-to-end testing</li>
+                <li>CI/CD pipeline integration</li>
+            </ul>
+
+            <h2>QA Engineer</h2>
+            <ul>
+                <li>Setting up QA processes from scratch</li>
+                <li>Creating clear, high-quality test documentation</li>
+                <li>Eliminating redundant and low-value tests</li>
+                <li>Identifying and adding missing test coverage</li>
+                <li>Working closely with teams of any size</li>
+                <li>Reading and understanding code (especially unit and integration tests) to avoid duplicate testing</li>
+                <li>Improving not only QA processes but also overall team delivery</li>
+            </ul>
+        </div>
     </div>
 </section>
 
-<script>
-    function calculateYearsFromStartYear(startYear) {
-        const currentYear = new Date().getFullYear();
-        return Math.max(0, currentYear - startYear);
-    }
-
-    const experienceStartYear = 2013;
-
-    const yearsOfExperience = calculateYearsFromStartYear(experienceStartYear);
-    document.getElementById("experienceYears").textContent = yearsOfExperience;
-</script>
 
 <!-- ===== EXPERIENCE ===== -->
 <section class="cv-section" id="experience">
