@@ -275,12 +275,15 @@
     <div class="font-controls">
         <button class="font-btn" id="fontMinus">–</button>
         <button class="font-btn" id="fontPlus">+</button>
+        <button class="pdf-btn" id="downloadPdf">📄 PDF</button>
     </div>
-    <button class="pdf-btn" id="downloadPdf">📄 PDF</button>
 </div>
 <script>
     document.getElementById("downloadPdf").addEventListener("click", () => {
+        const originalTitle = document.title;
+        document.title = "Daniil_Kotsiievskyi_CV_SDET_Lead";
         window.print();
+        document.title = originalTitle;
     });
 </script>
 <!-- ===== ABOUT ===== -->
