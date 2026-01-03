@@ -216,7 +216,6 @@
         @media print {
             body {
                 background: white;
-                padding: 0;
             }
 
             /* Hide navigation & buttons */
@@ -233,32 +232,13 @@
                 display: block !important;
             }
 
-            /* Remove card shadows & spacing */
-            .experience-card,
-            .text-card {
-                box-shadow: none;
-                margin-bottom: 20px;
-                padding: 20px;
-            }
-
-            h1, h2 {
-                page-break-after: avoid;
-            }
-
-            ul {
-                page-break-inside: avoid;
-            }
         }
 
         @page {
             size: A4;
             margin: 20mm;
         }
-        @media print {
-            body {
-                font-size: 14px !important;
-            }
-        }
+
     </style>
 </head>
 <body>
