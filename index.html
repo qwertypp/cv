@@ -226,7 +226,7 @@
     <div class="about-container">
         <!-- Profile photo -->
         <div class="about-photo">
-            <img src="img.png" alt="Profile photo">
+            <img src="photo.jpg" alt="Profile photo">
         </div>
 
         <!-- About text -->
@@ -289,6 +289,17 @@
         </div>
     </div>
 </section>
+<script>
+    function calculateYearsFromStartYear(startYear) {
+        const currentYear = new Date().getFullYear();
+        return Math.max(0, currentYear - startYear);
+    }
+
+    const experienceStartYear = 2013;
+
+    document.getElementById("experienceYears").textContent =
+        calculateYearsFromStartYear(experienceStartYear);
+</script>
 
 
 <!-- ===== EXPERIENCE ===== -->
