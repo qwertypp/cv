@@ -214,24 +214,81 @@
         }
 
         @media print {
-            body {
-                background: white;
+
+            /* Remove browser headers/footers hint */
+            @page {
+                margin: 20mm;
             }
 
-            /* Hide navigation & buttons */
-            .top-bar,
+            body {
+                background: white !important;
+                font-size: 12px;
+            }
+
+            /* Disable navigation & buttons */
+            .top-nav,
             .font-controls,
-            .pdf-btn,
-            .category-btn,
-            .nav-btn {
+            .pdf-button {
                 display: none !important;
             }
 
-            /* Show all sections */
-            .cv-section {
-                display: block !important;
+            /* Fix About layout for print */
+            .about-container {
+                display: grid !important;
+                grid-template-columns: 160px 1fr;
+                gap: 20px;
+                align-items: start;
             }
 
+            /* Photo smaller and aligned */
+            .about-photo img {
+                width: 150px;
+                box-shadow: none !important;
+                border-radius: 8px;
+            }
+
+            /* Remove card styling */
+            .text-card {
+                box-shadow: none !important;
+                border-radius: 0 !important;
+                padding: 0 !important;
+            }
+
+            /* English level inline and subtle */
+            .english-level {
+                display: block;
+                margin: 6px 0 12px 0;
+                padding: 0;
+                background: none;
+                color: #000;
+                font-size: 12px;
+                font-weight: 600;
+            }
+
+            /* Reduce heading spacing */
+            h1, h2, h3 {
+                margin-top: 12px;
+                margin-bottom: 6px;
+            }
+
+            /* Compact lists */
+            ul {
+                margin: 6px 0 10px 16px;
+            }
+
+            li {
+                margin-bottom: 3px;
+            }
+
+            /* Prevent ugly page breaks */
+            section,
+            .text-card {
+                page-break-inside: avoid;
+            }
+
+            h2 {
+                page-break-after: avoid;
+            }
         }
 
         @page {
