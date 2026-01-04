@@ -91,6 +91,9 @@
             display: none;
         }
 
+
+
+
         .cv-section.active {
             display: block;
         }
@@ -215,79 +218,71 @@
 
         @media print {
 
-            /* Remove browser headers/footers hint */
             @page {
                 margin: 20mm;
             }
 
             body {
                 background: white !important;
-                font-size: 12px;
+                overflow: visible !important;
             }
 
-            /* Disable navigation & buttons */
+            /* SHOW ALL SECTIONS */
+            .cv-section {
+                display: block !important;
+                visibility: visible !important;
+                height: auto !important;
+                min-height: auto !important;
+                overflow: visible !important;
+            }
+
+            /* REMOVE UI ELEMENTS */
+            header,
+            nav,
             .top-nav,
             .font-controls,
             .pdf-button {
                 display: none !important;
+                position: static !important;
             }
 
-            /* Fix About layout for print */
+            /* FIX ABOUT LAYOUT */
             .about-container {
                 display: grid !important;
-                grid-template-columns: 160px 1fr;
+                grid-template-columns: 150px 1fr;
                 gap: 20px;
                 align-items: start;
             }
 
-            /* Photo smaller and aligned */
             .about-photo img {
-                width: 150px;
+                width: 140px;
                 box-shadow: none !important;
-                border-radius: 8px;
             }
 
-            /* Remove card styling */
             .text-card {
                 box-shadow: none !important;
-                border-radius: 0 !important;
                 padding: 0 !important;
+                border-radius: 0 !important;
             }
 
-            /* English level inline and subtle */
             .english-level {
-                display: block;
-                margin: 6px 0 12px 0;
-                padding: 0;
-                background: none;
+                background: none !important;
+                padding: 0 !important;
+                margin: 6px 0 12px;
                 color: #000;
-                font-size: 12px;
-                font-weight: 600;
             }
 
-            /* Reduce heading spacing */
-            h1, h2, h3 {
-                margin-top: 12px;
-                margin-bottom: 6px;
-            }
-
-            /* Compact lists */
-            ul {
-                margin: 6px 0 10px 16px;
-            }
-
-            li {
-                margin-bottom: 3px;
-            }
-
-            /* Prevent ugly page breaks */
-            section,
-            .text-card {
+            /* PAGE BREAK SANITY */
+            section {
                 page-break-inside: avoid;
             }
 
-            h2 {
+            h1, h2 {
                 page-break-after: avoid;
+            }
+
+            ul {
+                margin-left: 16px;
             }
         }
 
