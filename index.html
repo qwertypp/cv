@@ -216,148 +216,20 @@
             background: #15803d;
         }
 
-        @media print {
-
-            @page {
-                margin: 20mm;
-            }
-
-            body {
-                background: white !important;
-                overflow: visible !important;
-            }
-
-            /* SHOW ALL SECTIONS */
-            .cv-section {
-                display: block !important;
-                visibility: visible !important;
-                height: auto !important;
-                min-height: auto !important;
-                overflow: visible !important;
-            }
-
-            /* REMOVE UI ELEMENTS */
-            header,
-            nav,
-            .top-nav,
-            .font-controls,
-            .pdf-button {
-                display: none !important;
-                position: static !important;
-            }
-
-            /* FIX ABOUT LAYOUT */
-            .about-container {
-                display: grid !important;
-                grid-template-columns: 150px 1fr;
-                gap: 20px;
-                align-items: start;
-            }
-
-            .about-photo img {
-                width: 140px;
-                box-shadow: none !important;
-            }
-
-            .text-card {
-                box-shadow: none !important;
-                padding: 0 !important;
-                border-radius: 0 !important;
-            }
-
-            .english-level {
-                background: none !important;
-                padding: 0 !important;
-                margin: 6px 0 12px;
-                color: #000;
-            }
-
-            /* PAGE BREAK SANITY */
-            section {
-                page-break-inside: avoid;
-            }
-
-            h1, h2 {
-                page-break-after: avoid;
-            }
-
-            ul {
-                margin-left: 16px;
-            }
-        }
-
-        @page {
-            size: A4;
-            margin: 20mm;
-        }
-
-        /* About layout */
-        .about-wrapper {
-            display: flex;
-            gap: 24px;
-            align-items: flex-start;
-            margin-top: 24px;
-        }
-        .about-photo img {
-            width: 150px;
-            border-radius: 12px;
-        }
-        .about-text {
-            flex: 1;
-        }
-        .english-level {
-            margin-top: 8px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            display: inline-block;
-            padding: 5px 12px;
-            background: #e3f2fd;
-            color: #0d47a1;
-            border-radius: 10px;
-        }
-
-        /* Print styles */
-        @media print {
-            body {
-                background: #fff !important;
-            }
-
-            /* Show all sections in print */
-            .cv-section {
-                display: block !important;
-                visibility: visible !important;
-            }
-
-            /* Hide UI */
-            nav, .font-controls, .pdf-button {
-                display: none !important;
-            }
-
-            /* Flatten About layout */
-            .about-wrapper {
-                display: block !important;
-            }
-            .about-photo img {
-                width: 120px !important;
-                margin-bottom: 10px;
-            }
-            .english-level {
-                padding: 0;
-                background: none;
-                color: #000;
-                margin: 4px 0;
-            }
-
-            .text-card {
-                box-shadow: none !important;
-                padding: 0 !important;
-            }
-        }
-
 
     </style>
 </head>
 <body>
+
+<script>
+    window.addEventListener('beforeprint', () => {
+        document.body.classList.add('print-mode');
+    });
+
+    window.addEventListener('afterprint', () => {
+        document.body.classList.remove('print-mode');
+    });
+</script>
 
 <!-- ===== Top Bar ===== -->
 <div class="top-bar">
@@ -371,7 +243,6 @@
     <div class="font-controls">
         <button class="font-btn" id="fontMinus">–</button>
         <button class="font-btn" id="fontPlus">+</button>
-        <button class="pdf-btn" id="downloadPdf">📄 PDF</button>
     </div>
 </div>
 <script>
